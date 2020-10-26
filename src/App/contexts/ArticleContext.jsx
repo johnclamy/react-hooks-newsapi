@@ -6,24 +6,14 @@ export const ArticleContext = createContext()
 
 export default function ArticleContextProvider (props) {
   const [ articles, setArticles ] = useState([ ...initialArticles ])
-  const [ searchTerm, setSearchTerm ] = useState('')
 
   const onArticleRemove = id => {
     const filteredArticles = articles.filter(article => article.id !== id)
     setArticles(filteredArticles) 
   }
 
-  const onSetArticleSearch = searchTerm => setSearchTerm(searchTerm)
-
   return (
-    <ArticleContext.Provider
-      value={{
-        articles,
-        searchTerm,
-        onArticleRemove,
-        onSetArticleSearch
-      }}
-    >
+    <ArticleContext.Provider value={{ articles, onArticleRemove }}>
       {props.children}
     </ArticleContext.Provider>
   )

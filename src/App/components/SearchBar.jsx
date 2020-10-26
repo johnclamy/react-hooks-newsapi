@@ -1,25 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { FaSearch } from 'react-icons/fa'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
-import { ArticleContext } from '../contexts/ArticleContext'
+import { SearchContext } from '../contexts/SearchContext'
 
 export default function SearchBar () {
-  const { onSetArticleSearch } = useContext(ArticleContext)
-  const [ inputTerm, setInputTerm ] = useState('')
+  const { phrase, onSetPhrase } = useContext(SearchContext)
 
-  const handleChange = e => {
-    setInputTerm(e.target.value)
-    onSetArticleSearch(inputTerm)
-  }
+  const handleChange = e => onSetPhrase(e.target.value)
 
   return (
     <Form className='d-flex justify-content-between'>
       <Form.Control
         type='text'
         size='lg'
-        value={inputTerm}
+        value={phrase}
         placeholder='Search articles...'
         onChange={handleChange}
       />
