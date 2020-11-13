@@ -14,13 +14,5 @@ export const initialArticles = [
     description: 'Most new vehicles can now exceed 200 miles on a single charge. We look at options for every budget',
     url: 'https://www.techradar.com/news/canon-eos-r5-9-new-things-weve-learnt-about-the-full-frame-mirrorless-flagship',
     publishedAt: '2020-07-13T10:19:00Z'
-  },
-  {
-    id: '3',
-    source: 'T3',
-    title: 'Galaxy Note 20\'s S Pen is about to get a whole lot more useful – here\'s how',
-    description: 'The Samsung Galaxy Note 20\'s stylus software is getting a BIG upgrade',
-    url: 'https://www.t3.com/news/galaxy-note-20s-s-pen-is-about-to-get-a-whole-lot-more-useful-heres-how',
-    publishedAt: '2020-07-13T10:19:00Z'
   }
 ]
