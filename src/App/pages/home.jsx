@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col"
 import Alert from "react-bootstrap/Alert"
 
 import ArticleContextProvider from '../contexts/ArticleContext'
-import SearchContextProvider from '../contexts/SearchContext'
+// import SearchContextProvider from '../contexts/SearchContext'
 import FilterToolbar from '../components/FilterToolbar'
 import SearchBar from '../components/SearchBar'
 import Articles from '../components/Articles'
