@@ -6,10 +6,10 @@ import Button from 'react-bootstrap/Button';
 import { SearchContext } from '../contexts/SearchContext';
 
 export default function SearchBar() {
-  const { onCreatePhrase } = React.useContext(SearchContext);
+  const { onSetPhrase } = React.useContext(SearchContext);
   const [term, setTerm] = React.useState('');
   const handleClick = () => {
-    onCreatePhrase(term);
+    onSetPhrase(term);
     setTerm('');
   };
 
