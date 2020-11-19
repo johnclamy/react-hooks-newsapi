@@ -5,11 +5,11 @@ const newsApi = {
   get(news) {
     switch (news) {
       case 'top':
-        return `${this.url}${this.qry[0]}?country=uk&apiKey=${this.key}`;
+        return `${this.url}${this.qry[0]}?country=gb&apiKey=${this.key}`;
       case 'latest':
-        return `${this.url}${this.qry[0]}?apiKey=${this.key}`;
+        return `${this.url}${this.qry[0]}?country=gb&sortBy=latest&apiKey=${this.key}`;
       case 'uk':
-        return `${this.url}${this.qry[0]}?country=uk&apiKey=${this.key}`;
+        return `${this.url}${this.qry[0]}?country=gb&apiKey=${this.key}`;
       case 'bbc':
         return `${this.url}${this.qry[0]}?${this.qry[2]}=bbc-news&apiKey=${this.key}`;
       case 'biz':
@@ -25,6 +25,9 @@ const newsApi = {
       default:
         return `${this.url}${this.qry[0]}?country=uk&apiKey=${this.key}`;
     }
+  },
+  getBy(topic) {
+    return `${this.url}${this.qry[1]}?q=${topic}&sortBy=publishedAt&apiKey=${this.key}`;
   },
 };
 
