@@ -7,16 +7,12 @@ import Article from './Article';
 import searchArticles from '../../scripts/searchArticles';
 
 export default function Articles() {
-  const { articles, onRemoveArticle } = React.useContext(ArticleContext);
+  const { articles } = React.useContext(ArticleContext);
   const { phrase } = React.useContext(SearchContext);
   const articleList = articles.length ? (
     <ListGroup variant="flush">
       {articles.filter(searchArticles(phrase)).map((article) => (
-        <Article
-          key={article.id}
-          article={article}
-          onRemoveArticle={onRemoveArticle}
-        />
+        <Article key={article.id} article={article} />
       ))}
     </ListGroup>
   ) : (

@@ -1,24 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-import { FaTrash } from 'react-icons/fa';
 
 import formatDate from '../../scripts/format-date';
 
-export default function Article({ article, onRemoveArticle = (f) => f }) {
+export default function Article({ article }) {
   return (
     <ListGroup.Item>
-      <div className="d-flex justify-content-between">
-        <h1 className="h5">{article.title}</h1>
-        <Button
-          type="button"
-          variant="danger"
-          className="button-remove"
-          onClick={() => onRemoveArticle(article.id)}
-        >
-          <FaTrash />
-        </Button>
+      <div>
+        <h1 className="h5 text-primary">{article.title}</h1>
       </div>
       <ul className="list-unstyled d-flex w-100 justify-content-between">
         <li className="article-source-item">
@@ -46,5 +36,4 @@ Article.propTypes = {
       publishedAt: PropTypes.string,
     })
   ),
-  onRemoveArticle: PropTypes.func,
 };
