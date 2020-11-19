@@ -1,24 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import initialArticles from '../../data/initial-articles';
+// import initialArticles from '../../data/initial-articles';
 import { fetchDefaultArticles } from '../../api/newsApi';
 
 export const ArticleContext = React.createContext();
 
 export default function ArticleContextProvider({ children }) {
-  const [articles, setArticles] = React.useState(initialArticles);
+  const [articles, setArticles] = React.useState([]);
+  const handleSetArticles = (_articles) => setArticles(_articles);
 
   React.useEffect(() => {
-    fetchDefaultArticles();
+    fetchDefaultArticles(handleSetArticles);
   }, []);
 
+  console.log(articles);
+
   return (
-    <ArticleContext.Provider
-      value={{
-        articles,
-      }}
-    >
+    <ArticleContext.Provider value={{ articles }}>
       {children}
     </ArticleContext.Provider>
   );

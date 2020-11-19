@@ -12,7 +12,7 @@ export default function Articles() {
   const articleList = articles.length ? (
     <ListGroup variant="flush">
       {articles.filter(searchArticles(phrase)).map((article) => (
-        <Article key={article.id} article={article} />
+        <Article key={article.url} article={article} />
       ))}
     </ListGroup>
   ) : (

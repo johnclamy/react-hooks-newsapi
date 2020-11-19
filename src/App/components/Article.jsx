@@ -13,7 +13,7 @@ export default function Article({ article }) {
       <ul className="list-unstyled d-flex w-100 justify-content-between">
         <li className="article-source-item">
           <a className="article-source-link" href={article.url}>
-            {article.source}
+            {article.source.name}
           </a>
         </li>
         <li className="article-source-item">
@@ -29,7 +29,7 @@ Article.propTypes = {
   article: PropTypes.objectOf(
     PropTypes.shape({
       id: PropTypes.string,
-      source: PropTypes.string,
+      name: PropTypes.string,
       title: PropTypes.string,
       description: PropTypes.string,
       url: PropTypes.string,
