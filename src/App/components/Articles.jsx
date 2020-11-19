@@ -5,7 +5,6 @@ import { ArticleContext } from '../contexts/ArticleContext';
 import { SearchContext } from '../contexts/SearchContext';
 import Article from './Article';
 import searchArticles from '../../scripts/searchArticles';
-import { fetchUkArticles } from '../../api/newsApi';
 
 export default function Articles() {
   const { articles, onRemoveArticle } = React.useContext(ArticleContext);
@@ -25,8 +24,6 @@ export default function Articles() {
       No articles available for viewing. Please try again later.
     </p>
   );
-
-  React.useEffect(() => fetchUkArticles());
 
   return articleList;
 }

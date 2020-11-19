@@ -5,7 +5,7 @@ const newsApi = {
   get(news) {
     switch (news) {
       case 'top':
-        return `${this.url}${this.qry[0]}?apiKey=${this.key}`;
+        return `${this.url}${this.qry[0]}?country=uk&apiKey=${this.key}`;
       case 'latest':
         return `${this.url}${this.qry[0]}?apiKey=${this.key}`;
       case 'uk':
