@@ -4,12 +4,10 @@ const newsApi = {
   qry: ['top-headlines', 'everything', 'sources'],
   get(news) {
     switch (news) {
-      case 'top':
+      case 'uk': // Used for Top news and UK news
         return `${this.url}${this.qry[0]}?country=gb&apiKey=${this.key}`;
       case 'latest':
         return `${this.url}${this.qry[0]}?country=gb&sortBy=latest&apiKey=${this.key}`;
-      case 'uk':
-        return `${this.url}${this.qry[0]}?country=gb&apiKey=${this.key}`;
       case 'bbc':
         return `${this.url}${this.qry[0]}?${this.qry[2]}=bbc-news&apiKey=${this.key}`;
       case 'biz':
@@ -23,7 +21,7 @@ const newsApi = {
       case 'tech':
         return `${this.url}${this.qry[1]}?q=technology&sortBy=publishedAt&apiKey=${this.key}`;
       default:
-        return `${this.url}${this.qry[0]}?country=uk&apiKey=${this.key}`;
+        return `${this.url}${this.qry[0]}?country=uk&apiKey=${this.key}`; // Same as Top news and UK news
     }
   },
   getBy(topic) {
