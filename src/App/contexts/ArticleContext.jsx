@@ -1,19 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import initialArticles from '../../data/initial-articles';
-import { fetchDefaultArticles } from '../../api/newsApi';
+import initialArticles from '../../data/initial-articles';
+// import { fetchDefaultArticles } from '../../api/newsApi';
 
 export const ArticleContext = React.createContext();
 
 export default function ArticleContextProvider({ children }) {
-  const [articles, setArticles] = React.useState([]);
-  const handleSetArticles = (_articles) => setArticles(_articles);
-
+  const [articles, setArticles] = React.useState(initialArticles);
+  //  const handleSetArticles = (_articles) => setArticles(_articles);
+  /*
   React.useEffect(() => {
     fetchDefaultArticles(handleSetArticles);
   }, []);
-
+*/
   console.log(articles);
 
   return (
@@ -24,5 +24,5 @@ export default function ArticleContextProvider({ children }) {
 }
 
 ArticleContextProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };

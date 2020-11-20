@@ -20,5 +20,5 @@ export default function SearchContextProvider({ children }) {
 }
 
 SearchContextProvider.propTypes = {
-  children: PropTypes.element,
+  children: PropTypes.node,
 };
