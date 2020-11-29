@@ -15,7 +15,7 @@ export default function FilterToolbar() {
                 <Button type="button">top news</Button>
               </li>
               <li className="list-inline-item">
-                <Button type="button">latest news</Button>
+                <Button type="button">tech news</Button>
               </li>
             </ul>
           </Col>

@@ -16,7 +16,6 @@ export default function SearchBar() {
   return (
     <Form className="d-flex justify-content-between">
       <Form.Control
-        type="text"
         size="lg"
         value={term}
         placeholder="Search articles..."

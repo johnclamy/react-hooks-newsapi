@@ -90,7 +90,6 @@ a:hover {
   outline: none;
 }
 
-
 /* filter toolbar */
 
 .filter-toolbar {
@@ -142,13 +141,6 @@ a:hover {
   font-size: 0.8rem;
   margin-bottom: 4px;
 }
-
-.button-remove {
-  height: 42px;
-  width: 42px;
-  margin-left: 2rem;
-}
-
 
 /* Aside filter */
 

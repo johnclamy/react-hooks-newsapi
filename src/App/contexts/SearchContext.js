@@ -5,15 +5,10 @@ export const SearchContext = React.createContext();
 
 export default function SearchContextProvider({ children }) {
   const [phrase, setPhrase] = React.useState('');
-  const handleSetPhrase = (newPhrase) => setPhrase(newPhrase);
+  const handleSetPhrase = (term) => setPhrase(term);
 
   return (
-    <SearchContext.Provider
-      value={{
-        phrase,
-        onSetPhrase: handleSetPhrase,
-      }}
-    >
+    <SearchContext.Provider value={{ phrase, onSetPhrase: handleSetPhrase }}>
       {children}
     </SearchContext.Provider>
   );

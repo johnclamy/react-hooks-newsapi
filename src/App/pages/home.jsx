@@ -8,18 +8,18 @@ import FilterToolbar from '../components/FilterToolbar';
 import SearchBar from '../components/SearchBar';
 import FilterAside from '../components/FilterAside';
 import Articles from '../components/Articles';
-import ArticleContextProvider from '../contexts/ArticleContext';
 import SearchContextProvider from '../contexts/SearchContext';
+import ArticleContextProvider from '../contexts/ArticleContext';
 
 export default function Home() {
   return (
-    <ArticleContextProvider>
-      <FilterToolbar />
-      <Container>
-        <Row>
-          <Col sm={9} lg={8}>
-            <article className="articles-container">
-              <SearchContextProvider>
+    <SearchContextProvider>
+      <ArticleContextProvider>
+        <FilterToolbar />
+        <Container>
+          <Row>
+            <Col sm={9} lg={8}>
+              <article className="articles-container">
                 <header>
                   <Alert variant="dark">
                     <SearchBar />
@@ -27,14 +27,14 @@ export default function Home() {
                 </header>
                 <Articles />
                 <footer>article pages</footer>
-              </SearchContextProvider>
-            </article>
-          </Col>
-          <Col sm={3} lg={{ span: 3, offset: 1 }}>
-            <FilterAside />
-          </Col>
-        </Row>
-      </Container>
-    </ArticleContextProvider>
+              </article>
+            </Col>
+            <Col sm={3} lg={{ span: 3, offset: 1 }}>
+              <FilterAside />
+            </Col>
+          </Row>
+        </Container>
+      </ArticleContextProvider>
+    </SearchContextProvider>
   );
 }
