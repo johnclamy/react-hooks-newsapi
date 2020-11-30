@@ -5,10 +5,10 @@ import { ArticleContext } from '../contexts/ArticleContext';
 import Article from './Article';
 
 export default function Articles() {
-  const { articles } = React.useContext(ArticleContext);
-  const articleList = articles.length ? (
+  const { initialArticles } = React.useContext(ArticleContext);
+  const articleList = initialArticles.length ? (
     <ListGroup variant="flush">
-      {articles.map((article) => (
+      {initialArticles.map((article) => (
         <Article key={article.url} article={article} />
       ))}
     </ListGroup>
