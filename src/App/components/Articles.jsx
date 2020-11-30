@@ -6,7 +6,6 @@ import Article from './Article';
 
 export default function Articles() {
   const { articles } = React.useContext(ArticleContext);
-  console.log(articles);
   const articleList = articles.length ? (
     <ListGroup variant="flush">
       {articles.map((article) => (

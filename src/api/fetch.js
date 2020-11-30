@@ -8,8 +8,7 @@ export const fetchTopNews = async (source = 'bbc-news') => {
   const url = `${ROOT_URL}top-headlines?sources=${source}&apiKey=${API_KEY}`;
   try {
     const { data } = await axios.get(url);
-    console.log(data);
-    // return data;
+    return data.articles;
   } catch (err) {
     console.error(err.message);
   }
