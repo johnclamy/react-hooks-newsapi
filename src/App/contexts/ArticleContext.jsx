@@ -7,13 +7,13 @@ export const ArticleContext = React.createContext();
 
 export default function ArticleContextProvider({ children }) {
   const [initialArticles, setInitialArticles] = React.useState([]);
-  const handleSetTopNews = async () => {
+
+  const handleGetInitialArticles = async () => {
     const news = await fetchTopNews();
-    console.log(news);
     setInitialArticles(news);
   };
 
-  React.useEffect(() => handleSetTopNews(), []);
+  React.useEffect(() => handleGetInitialArticles(), []);
 
   return (
     <ArticleContext.Provider value={{ initialArticles }}>
