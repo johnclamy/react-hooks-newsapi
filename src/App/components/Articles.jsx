@@ -1,5 +1,6 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Alert from 'react-bootstrap/Alert';
 
 import { ArticleContext } from '../contexts/ArticleContext';
 import Article from './Article';
@@ -13,9 +14,9 @@ export default function Articles() {
       ))}
     </ListGroup>
   ) : (
-    <p className="no-articles-label">
-      No articles available for viewing. Please try again later.
-    </p>
+    <Alert variant="info">
+      <strong>Loading news articles...</strong> Thank you for your patience.
+    </Alert>
   );
 
   return articleList;
