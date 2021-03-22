@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import * as ROUTES from '../../routes';
+import * as ROUTES from '../routes';
 
 export default function Navigation() {
   return (
