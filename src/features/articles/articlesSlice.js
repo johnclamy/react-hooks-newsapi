@@ -17,6 +17,14 @@ const articlesSlice = createSlice({
   },
 });
 
-export const { addArticle, removeArticle } = articlesSlice.actions;
+export const {
+  addArticle,
+  getArticles,
+  getArticlesSuccess,
+  getArticlesFailure,
+  removeArticle,
+} = articlesSlice.actions;
 export const articleSelector = (state) => state.articles;
 export default articlesSlice.reducer;
+
+export function fetchArticles() {}
