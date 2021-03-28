@@ -19,6 +19,5 @@ export default function () {
     </ListGroup>
   );
 
-  console.log(articles);
   return articleList;
 }
