@@ -1,12 +1,12 @@
-import { useState } from 'react';
+// import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { Alert, ListGroup } from 'react-bootstrap';
 
 import ArticleListItem from './ArticleListItem';
+import { articleSelector } from '../features/articles/articlesSlice';
 
 export default function () {
-  const articleData = useSelector((state) => state.articles);
-  const [articles, setArticles] = useState(articleData.articles);
+  const { articles } = useSelector(articleSelector);
   const articleList = !articles.length ? (
     <Alert className="lead text-center" variant="info">
       Loading articles...
@@ -19,7 +19,6 @@ export default function () {
     </ListGroup>
   );
 
-  console.log(articleData.articles);
   console.log(articles);
   return articleList;
 }

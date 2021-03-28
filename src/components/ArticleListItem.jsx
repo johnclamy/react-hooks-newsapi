@@ -1,7 +1,12 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { Button, Badge, ListGroup } from 'react-bootstrap';
 
+import { removeArticle } from '../features/articles/articlesSlice';
+
 export default function ArticleListItem({ article }) {
+  const dispatch = useDispatch();
+
   return (
     <ListGroup.Item className="mb-3">
       <header>
@@ -21,6 +26,7 @@ export default function ArticleListItem({ article }) {
       <footer>
         <Button
           className="text-capitalize float-right mt-2 mb-0"
+          onClick={() => dispatch(removeArticle(article.id))}
           variant="danger"
           size="sm"
         >

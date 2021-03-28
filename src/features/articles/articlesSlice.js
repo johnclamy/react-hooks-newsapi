@@ -13,7 +13,12 @@ const articlesSlice = createSlice({
     getArticles: () => {},
     getArticlesSuccess: () => {},
     getArticlesFailure: () => {},
-    removeArticle: () => {},
+    removeArticle: (state, action) => {
+      const articles = state.articles.filter(
+        (article) => article.id !== action.payload
+      );
+      state.articles = articles;
+    },
   },
 });
 
