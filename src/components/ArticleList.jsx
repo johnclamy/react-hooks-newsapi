@@ -1,7 +1,8 @@
 import { useSelector } from 'react-redux';
-import { Alert, ListGroup } from 'react-bootstrap';
+import { ListGroup } from 'react-bootstrap';
 
 import ArticleListItem from './ArticleListItem';
+import PageAlert from './PageAlert';
 import { articleSelector } from '../features/articles/articlesSlice';
 import { searchTermSelector } from '../features/search/searchSlice';
 
@@ -12,9 +13,10 @@ export default function () {
   const { articles } = useSelector(articleSelector);
   const { searchTerm } = useSelector(searchTermSelector);
   const articleList = !articles.length ? (
-    <Alert className="lead text-center" variant="info">
-      Loading articles...
-    </Alert>
+    <PageAlert>
+      <strong>Sorry!</strong> There are currently no articles available for
+      viewing.
+    </PageAlert>
   ) : (
     <ListGroup>
       {articles.filter(searchArticlesBy(searchTerm)).map((article) => (
