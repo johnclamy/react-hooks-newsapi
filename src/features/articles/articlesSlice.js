@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
 import initialArticles from './initialArticles';
 
@@ -9,10 +10,17 @@ const articlesSlice = createSlice({
     articles: initialArticles,
   },
   reducers: {
-    addArticle: () => {},
-    getArticles: () => {},
-    getArticlesSuccess: () => {},
-    getArticlesFailure: () => {},
+    getArticles: (state) => (state.loading = true),
+    getArticlesSuccess: (state, action) => {
+      state.articles = action.payload;
+      state.loading = false;
+      state.hasErrors = false;
+    },
+    getArticlesFailure: (state, action) => {
+      state.loading = false;
+      state.hasErrors = true;
+      console.error(action.payload);
+    },
 
     removeArticle: (state, action) => {
       const articles = state.articles.filter(
@@ -24,7 +32,6 @@ const articlesSlice = createSlice({
 });
 
 export const {
-  addArticle,
   getArticles,
   getArticlesSuccess,
   getArticlesFailure,
@@ -33,4 +40,10 @@ export const {
 export const articleSelector = (state) => state.articles;
 export default articlesSlice.reducer;
 
-export function fetchArticles() {}
+export function fetchArticles(dispatch, url) {
+  dispatch(getArticles());
+  axios
+    .get(url)
+    .then((rslt) => dispatch(getArticlesSuccess(rslt)))
+    .catch((error) => dispatch(getArticlesFailure(error)));
+}

@@ -3,8 +3,14 @@ import { ListGroup } from 'react-bootstrap';
 
 import ArticleListItem from './ArticleListItem';
 import PageAlert from './PageAlert';
+import newsapi from '../api/newsapi';
 import { articleSelector } from '../features/articles/articlesSlice';
 import { searchTermSelector } from '../features/search/searchSlice';
+
+const PATH_BASE = newsapi.rootUrl;
+const PATH_TYPE = 'top-headlines';
+const COUNTRY = 'country=gb';
+const API_KEY = newsapi.apiKey;
 
 const searchArticlesBy = (term) => (article) =>
   !term || article.title.toLowerCase().includes(term.toLowerCase());
