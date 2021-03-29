@@ -7,10 +7,25 @@ export default function FilterAside() {
       <h2 className="aside-filter-title">news filters:</h2>
       <Form>
         <Form.Group>
-          <Form.Check type="radio" label="BBC News" defaultChecked />
+          <Form.Check type="radio" label="All" defaultChecked />
         </Form.Group>
         <Form.Group>
-          <Form.Check type="radio" label="Wall St Journal" />
+          <Form.Check type="radio" label="Business" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Check type="radio" label="Entertainment" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Check type="radio" label="Health" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Check type="radio" label="Science" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Check type="radio" label="Sports" />
+        </Form.Group>
+        <Form.Group>
+          <Form.Check type="radio" label="Technology" />
         </Form.Group>
       </Form>
     </aside>

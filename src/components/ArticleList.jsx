@@ -9,8 +9,10 @@ import { searchTermSelector } from '../features/search/searchSlice';
 
 const PATH_BASE = newsapi.rootUrl;
 const PATH_TYPE = 'top-headlines';
+const CATEGORY = 'general';
 const COUNTRY = 'country=gb';
 const API_KEY = newsapi.apiKey;
+const url = '';
 
 const searchArticlesBy = (term) => (article) =>
   !term || article.title.toLowerCase().includes(term.toLowerCase());
