@@ -13,6 +13,7 @@ const articlesSlice = createSlice({
     getArticles: () => {},
     getArticlesSuccess: () => {},
     getArticlesFailure: () => {},
+
     removeArticle: (state, action) => {
       const articles = state.articles.filter(
         (article) => article.id !== action.payload
