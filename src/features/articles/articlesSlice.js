@@ -1,13 +1,13 @@
 import axios from 'axios';
 import { createSlice } from '@reduxjs/toolkit';
-import initialArticles from './initialArticles';
+// import initialArticles from './initialArticles';
 
 const articlesSlice = createSlice({
   name: 'articles',
   initialState: {
     loading: false,
     hasErrors: false,
-    articles: initialArticles,
+    articles: [],
   },
   reducers: {
     getArticles: (state) => (state.loading = true),
@@ -15,6 +15,7 @@ const articlesSlice = createSlice({
       state.articles = action.payload;
       state.loading = false;
       state.hasErrors = false;
+      console.log(action.payload);
     },
     getArticlesFailure: (state, action) => {
       state.loading = false;
