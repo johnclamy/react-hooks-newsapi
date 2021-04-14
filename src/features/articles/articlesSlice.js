@@ -15,7 +15,8 @@ export const getArticles = createAsyncThunk(
     const rslt = await axios.get(
       `${PATH_BASE}${PATH_TYPE}?${COUNTRY}&${CATEGORY}&apiKey=${API_KEY}`
     );
-    return rslt.data;
+    console.log(rslt.data);
+    return rslt.data.articles;
   }
 );
 
