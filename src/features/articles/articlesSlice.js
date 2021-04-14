@@ -1,50 +1,42 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { createSlice } from '@reduxjs/toolkit';
-// import initialArticles from './initialArticles';
+
+import newsapi from '../../api/newsapi';
+
+const PATH_BASE = newsapi.rootUrl;
+const PATH_TYPE = 'top-headlines';
+const CATEGORY = 'general';
+const COUNTRY = 'country=gb';
+const API_KEY = newsapi.apiKey;
+
+export const getArticles = createAsyncThunk(
+  'articles/getArticles',
+  async () => {
+    const rslt = await axios.get(
+      `${PATH_BASE}${PATH_TYPE}?${COUNTRY}&${CATEGORY}&apiKey=${API_KEY}`
+    );
+    return rslt.data;
+  }
+);
 
 const articlesSlice = createSlice({
   name: 'articles',
   initialState: {
-    loading: false,
-    hasErrors: false,
-    articles: [],
+    articleList: [],
+    status: null,
   },
-  reducers: {
-    getArticles: (state) => (state.loading = true),
-    getArticlesSuccess: (state, action) => {
-      state.articles = action.payload;
-      state.loading = false;
-      state.hasErrors = false;
-      console.log(action.payload);
+  extraReducers: {
+    [getArticles.pending]: (state) => {
+      state.status = 'loading';
     },
-    getArticlesFailure: (state, action) => {
-      state.loading = false;
-      state.hasErrors = true;
-      console.error(action.payload);
+    [getArticles.fulfilled]: (state, action) => {
+      state.articleList = action.payload;
+      state.status = 'success';
     },
-
-    removeArticle: (state, action) => {
-      const articles = state.articles.filter(
-        (article) => article.id !== action.payload
-      );
-      state.articles = articles;
+    [getArticles.rejected]: (state) => {
+      state.status = 'failed';
     },
   },
 });
 
-export const {
-  getArticles,
-  getArticlesSuccess,
-  getArticlesFailure,
-  removeArticle,
-} = articlesSlice.actions;
-export const articleSelector = (state) => state.articles;
 export default articlesSlice.reducer;
-
-export function fetchArticles(dispatch, url) {
-  dispatch(getArticles());
-  axios
-    .get(url)
-    .then((rslt) => dispatch(getArticlesSuccess(rslt)))
-    .catch((error) => dispatch(getArticlesFailure(error)));
-}
