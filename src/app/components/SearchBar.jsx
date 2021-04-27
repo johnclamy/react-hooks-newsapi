@@ -4,14 +4,11 @@ import { useDispatch } from 'react-redux';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import { setSearchTerm } from '../features/search/searchSlice';
-
 export default function SearchBar() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [term, setTerm] = useState('');
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(setSearchTerm(term));
   };
 
   return (

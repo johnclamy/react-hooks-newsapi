@@ -5,7 +5,7 @@ import HomePage from '../app/pages/home';
 import AboutPage from '../app/pages/about';
 
 export const HOME = '/';
-export const ABOUT = './about';
+export const ABOUT = '/about';
 
 export default function Routes({ children }) {
   return (

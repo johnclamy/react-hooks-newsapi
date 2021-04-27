@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
-import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
 
-import * as ROUTES from '../routes';
+import * as ROUTES from '../../routes';
 
 export default function Navigation() {
   return (
-    <Navbar className="app-navbar" expand="lg">
+    <Navbar className="app-navbar" expand="md">
       <Navbar.Brand className="app-navbar-brand">
         <Link to={ROUTES.HOME}>daily reporter</Link>
       </Navbar.Brand>
@@ -22,14 +21,6 @@ export default function Navigation() {
           <LinkContainer to={ROUTES.ABOUT}>
             <Nav.Link>about</Nav.Link>
           </LinkContainer>
-          <LinkContainer to={ROUTES.CONTACT}>
-            <Nav.Link>contact</Nav.Link>
-          </LinkContainer>
-        </Nav>
-        <Nav>
-          <Button variant="light" className="text-uppercase">
-            login
-          </Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
