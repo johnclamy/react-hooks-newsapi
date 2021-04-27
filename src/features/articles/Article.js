@@ -1,22 +1,20 @@
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { Badge, ListGroup } from 'react-bootstrap';
 
-function formatDate(strDate) {
-  const arrDate = strDate.split('-');
-  const dayTime = arrDate[2].split('T');
-  const time = dayTime[1].slice(0, 5);
-
-  return `${dayTime[0]}/${arrDate[1]}/${arrDate[0]}, ${time}`;
-}
+import formatDate from '../../app/helper';
 
 export default function Article({ article }) {
   return (
-    <ListGroup.Item className="mb-3">
+    <ListGroup.Item className="mb-3 py-4">
       <header>
         <h1 className="h3">
-          <a className="text-decoration-none text-primary" href={article.url}>
+          <Link
+            to={`/articles/${article.id}`}
+            className="text-decoration-none text-primary"
+          >
             {article.title}
-          </a>
+          </Link>
         </h1>
       </header>
       <main>
@@ -24,7 +22,6 @@ export default function Article({ article }) {
           <Badge variant="warning">{article.source}</Badge>
           <Badge variant="info">{formatDate(article.publishedAt)}</Badge>
         </section>
-        <p className="lead text-dark-50">{article.description}</p>
       </main>
     </ListGroup.Item>
   );
