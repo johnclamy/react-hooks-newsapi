@@ -26,15 +26,6 @@ export default function Article({ article }) {
         </section>
         <p className="lead text-dark-50">{article.description}</p>
       </main>
-      <footer>
-        <Button
-          className="text-capitalize float-right mt-2 mb-0"
-          variant="danger"
-          size="sm"
-        >
-          remove
-        </Button>
-      </footer>
     </ListGroup.Item>
   );
 }
