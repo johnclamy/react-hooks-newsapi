@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { Alert, Col, Row, Card } from 'react-bootstrap';
+import { Alert, Button, Col, Row, Card } from 'react-bootstrap';
 
 import formatDate from '../../app/helper';
 
 export default function SinglePostPage({ match }) {
+  const history = useHistory();
   const { articleId } = match.params;
   const article = useSelector((state) =>
     state.articles.find((a) => a.id === articleId)
@@ -35,6 +37,11 @@ export default function SinglePostPage({ match }) {
             <Card.Text className="pb-3 lead text-dark-50">
               {article.description}
             </Card.Text>
+            <Card.Footer className="py-3 text-center">
+              <Button onClick={history.goBack} variant="link">
+                Back to articles
+              </Button>
+            </Card.Footer>
           </Card.Body>
         </Card>
       </Col>
