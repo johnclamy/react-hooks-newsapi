@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Button, Badge, ListGroup } from 'react-bootstrap';
+import { Badge, ListGroup } from 'react-bootstrap';
 
 function formatDate(strDate) {
   const arrDate = strDate.split('-');
