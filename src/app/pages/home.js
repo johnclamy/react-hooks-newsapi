@@ -13,7 +13,7 @@ export default function Home() {
     <>
       <FilterToolbar />
       <Row>
-        <Col sm={9} lg={8}>
+        <Col md={9} lg={8}>
           <article className="articles-container">
             <header>
               <Alert variant="dark">
@@ -24,7 +24,7 @@ export default function Home() {
             <footer>article pages</footer>
           </article>
         </Col>
-        <Col sm={3} lg={{ span: 3, offset: 1 }}>
+        <Col md={3} lg={{ span: 3, offset: 1 }}>
           <FilterAside />
         </Col>
       </Row>
