@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import HomePage from '../app/pages/home';
 import AboutPage from '../app/pages/about';
+import SingleArticlePage from '../features/articles/SingleArticlePage';
 
 export const HOME = '/';
 export const ABOUT = '/about';
@@ -14,6 +15,7 @@ export default function Routes({ children }) {
       <Switch>
         <Route exact path={HOME} component={HomePage} />
         <Route path={ABOUT} component={AboutPage} />
+        <Route path="/articles/:articleId" component={SingleArticlePage} />
       </Switch>
     </Router>
   );
