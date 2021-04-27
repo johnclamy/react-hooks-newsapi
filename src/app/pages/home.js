@@ -6,7 +6,7 @@ import Alert from 'react-bootstrap/Alert';
 import FilterToolbar from '../components/FilterToolbar';
 import SearchBar from '../components/SearchBar';
 import FilterAside from '../components/FilterAside';
-// import ArticleList from '../components/ArticleList';
+import Articles from '../../features/articles/Articles';
 
 export default function Home() {
   return (
@@ -20,7 +20,7 @@ export default function Home() {
                 <SearchBar />
               </Alert>
             </header>
-            {/* <ArticleList /> */}
+            <Articles />
             <footer>article pages</footer>
           </article>
         </Col>

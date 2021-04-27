@@ -1,8 +1,5 @@
 import PropTypes from 'prop-types';
-import { useDispatch } from 'react-redux';
 import { Button, Badge, ListGroup } from 'react-bootstrap';
-
-import { removeArticle } from '../features/articles/articlesSlice';
 
 function formatDate(strDate) {
   const arrDate = strDate.split('-');
@@ -12,9 +9,7 @@ function formatDate(strDate) {
   return `${dayTime[0]}/${arrDate[1]}/${arrDate[0]}, ${time}`;
 }
 
-export default function ArticleListItem({ article }) {
-  const dispatch = useDispatch();
-
+export default function Article({ article }) {
   return (
     <ListGroup.Item className="mb-3">
       <header>
@@ -34,7 +29,6 @@ export default function ArticleListItem({ article }) {
       <footer>
         <Button
           className="text-capitalize float-right mt-2 mb-0"
-          onClick={() => dispatch(removeArticle(article.id))}
           variant="danger"
           size="sm"
         >
@@ -45,6 +39,6 @@ export default function ArticleListItem({ article }) {
   );
 }
 
-ArticleListItem.propTypes = {
+Article.propTypes = {
   article: PropTypes.objectOf(PropTypes.string),
 };
