@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { Alert, Button, Col, Row, Card } from 'react-bootstrap';
 
 import { selectArticleById } from './articlesSlice';
-import formatDate from '../../app/helper';
+import formatDate from '../../app/helper/formatDate';
 
 export default function SinglePostPage({ match }) {
   const history = useHistory();

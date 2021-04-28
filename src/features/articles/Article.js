@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Badge, ListGroup } from 'react-bootstrap';
 
-import formatDate from '../../app/helper';
+import formatDate from '../../app/helper/formatDate';
 
 export default function Article({ article }) {
   return (
