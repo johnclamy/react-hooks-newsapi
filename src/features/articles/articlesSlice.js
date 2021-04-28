@@ -1,7 +1,7 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
+import { client } from '../../api/client';
 
 import initialState from './initialState';
-import FETCH_STATUS from '../../app/helper/fetchStatus';
 
 const articlesSlice = createSlice({
   name: 'articles',
@@ -30,4 +30,13 @@ export const { articleAdded } = articlesSlice.actions;
 export const selectAllArticles = (state) => state.articles.articleList;
 export const selectArticleById = (state, articleId) =>
   state.articles.articleList.find((a) => a.id === articleId);
+
+export const fetchArticles = createAsyncThunk(
+  'articles/fetchArticles',
+  async () => {
+    const response = await client.get('/newsapi/articles');
+    return response.articles;
+  }
+);
+
 export default articlesSlice.reducer;
