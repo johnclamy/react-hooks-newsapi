@@ -3,14 +3,13 @@ import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { Alert, Button, Col, Row, Card } from 'react-bootstrap';
 
+import { selectArticleById } from './articlesSlice';
 import formatDate from '../../app/helper';
 
 export default function SinglePostPage({ match }) {
   const history = useHistory();
   const { articleId } = match.params;
-  const article = useSelector((state) =>
-    state.articles.find((a) => a.id === articleId)
-  );
+  const article = useSelector((state) => selectArticleById(state, articleId));
 
   if (!article) {
     return (

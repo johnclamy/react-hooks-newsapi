@@ -1,10 +1,11 @@
 import { useSelector } from 'react-redux';
 import { Alert, ListGroup } from 'react-bootstrap';
 
+import { selectAllArticles } from './articlesSlice';
 import Article from './Article';
 
 export default function List() {
-  const articles = useSelector((state) => state.articles);
+  const articles = useSelector(selectAllArticles);
   const renderArticles = !articles.length ? (
     <Alert className="lead" variant="info">
       No articles available for listing.
