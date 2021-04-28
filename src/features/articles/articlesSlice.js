@@ -8,4 +8,8 @@ const articlesSlice = createSlice({
   reducers: {},
 });
 
+// export { articleAdded } = articlesSlice.actions;
+export const selectAllArticles = (state) => state.articles;
+export const selectArticleById = (state, articleId) =>
+  state.articles.find((a) => a.id === articleId);
 export default articlesSlice.reducer;
