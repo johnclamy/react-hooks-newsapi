@@ -1,22 +1,47 @@
-import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Alert, ListGroup } from 'react-bootstrap';
 
-import { selectAllArticles } from './articlesSlice';
+import FETCH_STATUS from '../../app/helper/fetchStatus';
+import { selectAllArticles, fetchArticles } from './articlesSlice';
 import Article from './Article';
 
 export default function List() {
+  const [idle, loading, succeeded, failed] = FETCH_STATUS.status;
+  const fetchStatus = useSelector((state) => state.articles.status);
+  const error = useSelector((state) => state.articles.error);
+  const dispatch = useDispatch();
   const articles = useSelector(selectAllArticles);
-  const renderArticles = !articles.length ? (
-    <Alert className="lead" variant="info">
-      No articles available for listing.
-    </Alert>
-  ) : (
-    <ListGroup>
-      {articles.map((article) => (
-        <Article key={article.id} article={article} />
-      ))}
-    </ListGroup>
-  );
 
-  return renderArticles;
+  useEffect(() => {
+    if (fetchStatus === idle) {
+      dispatch(fetchArticles());
+    }
+  }, [fetchStatus, dispatch, idle]);
+
+  let renderArticles;
+
+  if (fetchStatus === loading) {
+    renderArticles = (
+      <Alert variant="info">
+        <Alert.Heading>Loading articles...</Alert.Heading>
+      </Alert>
+    );
+  } else if (fetchStatus === succeeded) {
+    renderArticles = (
+      <ListGroup>
+        {articles.map((article) => (
+          <Article key={article.id} article={article} />
+        ))}
+      </ListGroup>
+    );
+  } else if (fetchStatus === failed) {
+    renderArticles = (
+      <Alert className="lead" variant="danger">
+        {error}
+      </Alert>
+    );
+  }
+
+  return <>{renderArticles}</>;
 }
