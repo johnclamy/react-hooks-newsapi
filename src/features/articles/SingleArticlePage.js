@@ -13,7 +13,7 @@ export default function SinglePostPage({ match }) {
 
   if (!article) {
     return (
-      <Alert>
+      <Alert variant="warning">
         <Alert.Heading>Article not found!</Alert.Heading>
       </Alert>
     );
