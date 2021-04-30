@@ -19,7 +19,7 @@ export default function Article({ article }) {
       </header>
       <main>
         <section className="mt-4 mb-3 d-flex justify-content-between">
-          <Badge variant="warning">{article.source}</Badge>
+          <Badge variant="warning">{article.source.name}</Badge>
           <Badge variant="info">{formatDate(article.publishedAt)}</Badge>
         </section>
       </main>
@@ -28,5 +28,7 @@ export default function Article({ article }) {
 }
 
 Article.propTypes = {
-  article: PropTypes.objectOf(PropTypes.string),
+  article: PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+  ),
 };

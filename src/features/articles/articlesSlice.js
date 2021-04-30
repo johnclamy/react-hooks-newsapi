@@ -1,14 +1,18 @@
-import { createSlice, nanoid, createAsyncThunk } from '@reduxjs/toolkit';
-import { client } from '../../api/client';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 import initialState from './initialState';
 import FETCH_STATUS from '../../app/helper/fetchStatus';
+import newsapiArticles from '../../api/client';
+
+const { all } = newsapiArticles;
 
 export const fetchArticles = createAsyncThunk(
   'articles/fetchArticles',
   async () => {
-    const response = await client.get('/newsapi/articles');
-    return response.articles;
+    const response = await axios.get(all);
+    console.log(response.data.articles);
+    return response.data.articles;
   }
 );
 
@@ -17,24 +21,7 @@ const [, loading, succeeded, failed] = FETCH_STATUS.status;
 const articlesSlice = createSlice({
   name: 'articles',
   initialState,
-  reducers: {
-    articleAdded: {
-      reducer(state, action) {
-        state.articles.push(action.payload);
-      },
-      prepare(title, source, publishedAt, description) {
-        return {
-          payload: {
-            id: nanoid(),
-            title,
-            source,
-            publishedAt,
-            description,
-          },
-        };
-      },
-    },
-  },
+  reducers: {},
   extraReducers: {
     [fetchArticles.pending]: (state) => {
       state.status = loading;
@@ -52,7 +39,6 @@ const articlesSlice = createSlice({
   },
 });
 
-export const { articleAdded } = articlesSlice.actions;
 export const selectAllArticles = (state) => state.articles.articles;
 export const selectArticleById = (state, articleId) =>
   state.articles.articles.find((a) => a.id === articleId);
