@@ -41,6 +41,9 @@ const articlesSlice = createSlice({
 
 export const selectAllArticles = (state) => state.articles.articles;
 export const selectArticleById = (state, articleId) =>
-  state.articles.articles.find((a) => a.id === articleId);
+  state.articles.articles.find((a) => {
+    const id = a.url.slice(a.url.lastIndexOf('/') + 1).concat(a.publishedAt);
+    return id === articleId;
+  });
 
 export default articlesSlice.reducer;

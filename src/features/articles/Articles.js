@@ -30,9 +30,12 @@ export default function List() {
   } else if (fetchStatus === succeeded) {
     renderArticles = (
       <ListGroup>
-        {articles.map((article) => (
-          <Article key={article.id} article={article} />
-        ))}
+        {articles.map((article) => {
+          const id = article.url
+            .slice(article.url.lastIndexOf('/') + 1)
+            .concat(article.publishedAt);
+          return <Article key={id} id={id} article={article} />;
+        })}
       </ListGroup>
     );
   } else if (fetchStatus === failed) {
